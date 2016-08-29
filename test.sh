@@ -1,0 +1,1 @@
+echo -e "\x1B[01;96m foobar \x1B[0m"
