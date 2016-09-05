@@ -1,16 +1,30 @@
 #!/bin/bash
 
-#Jira CLI folder path
-CLI="/Users/jean/Documents/Tools/CLI/"
+#SETTINGS
+
+#Change to your Jira Command Line Folder 
+CLIFOLDER=/Users/jean/Documents/Tools/CLI
+
+
+#Changing directory to CLI folder
+cd $CLIFOLDER
 
 #Getting required information to create the project
 read -p "Please type the project name: " PROJECT
 read -p "Please type the project key: " KEY
+
+#Validating user input for project key to certify there are only alphanumeric characters
+while 
+  case "$KEY" in
+    *[!A-Za-z0-9]*) echo >&2 "Invalid input, please enter letters or numbers only"; true;;
+    *) false;;
+  esac
+do
+read -p "Please type the project key: " KEY
+done
+
 read -p "Please type the project description: " DESCRITION
 read -p "Please type the project lead users ID: " LEAD
-
-#Navigating into Jira CLI folder
-cd $CLI
 
 #Executing Jira CLI command to create project through REST
 echo -e "Creating project..."
